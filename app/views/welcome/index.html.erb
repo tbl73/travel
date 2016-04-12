@@ -1,0 +1,30 @@
+<h1>Welcome to my Travel Site</h1>
+<p>All about my awesome travels</p>
+<p> I'm from <%= @homestate %></p>
+
+<!-- puts each country from an array into an ordered list -->
+<ol>
+ <% @countries.each do |country| %>
+			<li><%= country %></li>
+			<% end %>
+</ol>
+
+<!-- Use a hash to show all the images with proper alts -->
+<!-- if surround with p tags, on individual lines -->
+<% @image_hash.each do |name, pic| %>
+	<%= image_tag pic, alt: name %>
+	<%end%>
+
+<!-- puts each image from an array, no alts -->
+<% @images.each do |pic| %>
+	<p><%= image_tag pic %></p>
+	<% end %>
+
+
+
+
+<%#= image_tag "bavaria2.jpg", alt: "Castle" %>
+<%#= image_tag "alps.jpg", alt: "Alps" %>
+<%#= image_tag "llamas.jpg", alt: "Llamas" %>
+<%#= image_tag "kangaroo.jpg", alt: "Kangaroo" %>
+
