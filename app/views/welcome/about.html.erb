@@ -13,4 +13,9 @@
 	<% if @size >= 12 %>
 		<p> "My feet are <strong>huge</strong>!" </p>
 	<%end%>
+<p>
 
+<%= link_to "Red", about_path(color: "red", size: 14), class: "btn btn-danger" %>
+<%= link_to "Yellow", about_path(color: "yellow", size: 5), class: "btn btn-warning" %>
+<%= link_to "Green", about_path(color: "green", size: 12), class: "btn btn-success" %>
+</p>

@@ -12,12 +12,12 @@
 <!-- Use a hash to show all the images with proper alts -->
 <!-- if surround with p tags, on individual lines -->
 <% @image_hash.each do |name, pic| %>
-	<%= image_tag pic, alt: name %>
+	<%= image_tag pic, alt: name, class: "img-responsive" %>
 	<%end%>
 
 <!-- puts each image from an array, no alts -->
 <% @images.each do |pic| %>
-	<p><%= image_tag pic %></p>
+	<p><%= image_tag pic, class: "img-responsive" %></p>
 	<% end %>
 
 
