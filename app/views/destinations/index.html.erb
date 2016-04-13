@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Destinations</h1>
+
+<ul class="nav nav-pills" role="tablist">
+  <li><%= link_to "All", destinations_path %></li>
+  <% @my_countries.each do |c| %>
+    <li><%= link_to c.country, destinations_path(country: c.country) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Destination', new_destination_path, class: "btn btn-info" %>
+
+<div class = "row">
+    <% @destinations.each do |destination| %>
+      <div class = "col-md-4">
+        <div class="well index-well">
+          <h3><%= "#{destination.city}, #{destination.country}"%></h3>
+          <h4>Population: <%= number_with_delimiter destination.population %> </h4>
+          <p><%= destination.description %></p>
+          <p><%= link_to 'Show', destination %>
+           <%= link_to 'Edit', edit_destination_path(destination) %>
+            <%= link_to 'Destroy', destination, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+</div>
+
+
+
+
