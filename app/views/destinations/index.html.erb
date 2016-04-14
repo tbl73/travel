@@ -16,6 +16,11 @@
       <div class = "col-md-4">
         <div class="well index-well">
           <h3><%= "#{destination.city}, #{destination.country}"%></h3>
+          <% if destination.avatar.url == nil %>
+            <%= image_tag "cityskyline.png", alt: "No image found", width: "200" %>
+            <% else %>
+          <p> <%= image_tag destination.avatar.url, alt: "#{destination.city}", width: "200" %></p>
+          <% end %>
           <h4>Population: <%= number_with_delimiter destination.population %> </h4>
           <p><%= destination.description %></p>
           <p><%= link_to 'Show', destination %>
