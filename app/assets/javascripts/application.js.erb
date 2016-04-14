@@ -13,21 +13,45 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require turbolinks
+
 //= require_tree .
 
 $(document).ready(function (){
 
     function initialize() {
+    	var myLatlng = new google.maps.LatLng(33.989793, -84.241315)
+    
       var mapOptions = {
-      center: { lat: 33.989793, lng: -84.241315},
-      zoom: 13
+      center: myLatlng,
+      zoom: 13,
+      scrollwheel: false
       };
         
       var map = new google.maps.Map(document.getElementById('map-canvas'),
-                mapOptions);    
+                mapOptions);   
+
+      var image = "<%= asset_path 'house.png' %>";
+      var marker = new google.maps.Marker({
+      	position: myLatlng,
+      	map: map,
+      	title: 'North Manor',
+      	icon: image,
+      	animation: google.maps.Animation.DROP
+      });
+
+      var contentString = '<h3>North Manor</h3>' +
+ 			  '<p>Woo-hoo!</p>';
+
+ 			 var infowindow = new google.maps.InfoWindow({
+  			 content: contentString
+ 			});
+
+ 			 google.maps.event.addListener(marker, 'click', function() {
+   	 infowindow.open(map,marker);
+ 			});
+ 
     }
-      
+   
     google.maps.event.addDomListener(window, 'load', initialize);
 });
 

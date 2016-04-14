@@ -1,24 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>City:</strong>
-  <%= @destination.city %>
-</p>
+<h2>
+  <%= @destination.address %>
+</h2>
 
-<p>
-  <strong>Country:</strong>
-  <%= @destination.country %>
-</p>
+<p><%= @destination.latitude%>, <%= @destination.longitude%></p>
 
 <p>
 	<strong>Population:</strong>
 	<%= number_with_delimiter @destination.population %>
 </p>
 
+
 <p>
   <strong>Description:</strong>
   <%= @destination.description %>
 </p>
+
+<div id="destination-map"></div>
 
 <p>
 	<%= image_tag @destination.avatar.url, alt: "#{@destination.city}", width: "200" %>
@@ -26,3 +25,10 @@
 
 <%= link_to 'Edit', edit_destination_path(@destination) %> |
 <%= link_to 'Back', destinations_path %>
+
+<%= javascript_tag do %>
+   latitude = '<%= j @destination.latitude.to_s %>';
+   longitude = '<%= j @destination.longitude.to_s %>';
+   address = '<%= j @destination.address %>';
+   description = '<%= j @destination.description %>';
+<% end %>
